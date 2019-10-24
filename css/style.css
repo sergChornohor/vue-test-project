@@ -6,7 +6,7 @@
 html, body{
   width: 100%;
   height: 100vh;
-	background-color: #DCDCDC;
+	background-color: #f8f8f8;
 	font-family: 'Helvetica', serif;
   display: flex;
 }
@@ -18,28 +18,27 @@ body{
   display: flex;
 }
   .wrapper{
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
     flex-direction: row-reverse;
     justify-content: center;
   }
     .content-wrapper{
-      max-width: 1170px;
-      /* width: 80%; */
+      width: 100%;
+      /* max-width: 1170px; */
       height: 100vh;
-      /* transform: translateX(270px); */
     }
 
-    @media only screen and (max-width: 1024px){
-      .wrapper{
-        width: 100%;
-      }
-    }
-    @media only screen and (max-width: 768px){
-      .wrapper{
-        width: 100%;
-      }
-    }
+@media only screen and (max-width: 1024px){
+  .wrapper{
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px){
+  .wrapper{
+    width: 100%;
+  }
+}
 .padding-30px{
     padding: 30px 20px 20px 30px;
 }
