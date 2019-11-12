@@ -5,8 +5,9 @@
 	<meta name="description" content="simple page for studing">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css"	href="css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Cabin:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"	href="css/reset.css">
+  <link rel="stylesheet" type="text/css"	href="css/style.css">
+	
 </head>
 <body>
 <div class="wrapper flex justify-center">
@@ -20,11 +21,11 @@
             </div>
             <div class="header-container-menu-nav">
               <menu class="flex space-between">
-                <li><p>Tasks</p></li>
-                <li><p>Kanban</p></li>
-                <li><p>Activity</p></li>
-                <li><p>Calendar</p></li>
-                <li><p>Files</p></li> 
+                <li><a>Tasks</a></li>
+                <li><a>Kanban</a></li>
+                <li><a>Activity</a></li>
+                <li><a>Calendar</a></li>
+                <li><a>Files</a></li> 
               </menu>
             </div>
           </div>
@@ -102,24 +103,25 @@
         <button class="side-menu-user-etc flex justify-center"><span class="etc"></span></button>
       </div>
       <div class="side-menu-tasks flex padding-30px">
-        <div class="side-menu-tasks-completed justify-center flex-column">
-          <h4>372</h4>
+        <div class="side-menu-tasks-completed justify-center flex-column" id="completed">
+          <h4 id="completed-number">372</h4>
           <h6>Completed Tasks</h6>
         </div>
         <div class="side-menu-tasks-open  justify-center flex-column">
-          <h4>11</h4>
+          <h4 id="open-number">11</h4>
           <h6>Open Tasks</h6>
         </div>
       </div>
       <div class="side-menu-menu padding-30px">
         <menu>
           <li><h6>MENU</h6></li>
-          <li><h5>Home</h5></li>
-          <li><h5>My tasks</h5></li>
-          <li><h5>Notifications</h5></li>
+          <li><a>Home</a></li>
+          <li><a>My tasks</a></li>
+          <li><a>Notifications</a><span id="notifications">3</span></li>
         </menu>  
       </div>
     </div>
+    <script src="js/main.js"></script>
 </div>
 </body>
 </html>
