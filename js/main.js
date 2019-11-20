@@ -1,8 +1,8 @@
-let completed = document.getElementById('completed');
-let completedNumber = document.getElementById('completed-number');
-let openNumber = document.getElementById('open-number');
-let photo_array = document.querySelectorAll('.uploaded-photos .uploaded-photo');
-let photo_notification = document.getElementById('notifications'); 
+const completed = document.getElementById('completed');
+const completedNumber = document.getElementById('completed-number');
+const openNumber = document.getElementById('open-number');
+const photo_array = document.querySelectorAll('.uploaded-photos .uploaded-photo');
+const photo_notification = document.getElementById('notifications'); 
 
 completed.onclick = function() {
     
