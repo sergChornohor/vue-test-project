@@ -2,8 +2,8 @@
   <div id="app">
     <div class="wrapper flex justify-center">
       <div class="content-wrapper">
-        <Header/>
-        <Content />
+        <Header/> 
+        <Content  @clickTasks="activeBlock='tasksContainer'"/>
       </div>
     <sideMenu />
     </div>
@@ -20,9 +20,9 @@ export default {
   components: {
     Content, sideMenu, Header
   },
-  methods: {
-    showtasks () {
-      this.$$children.isHidden = true;
+  data() {
+    return{
+
     }
   }
 }

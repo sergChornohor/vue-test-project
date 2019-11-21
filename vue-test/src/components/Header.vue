@@ -8,7 +8,7 @@
             </div>
             <div class="header-container-menu-nav">
               <menu class="flex space-between">
-                <li><a @click="isHidden">Tasks</a></li>
+                <li><a @click.prevent="$emit('clickTasks', $event)">Tasks</a></li>
                 <li><a>Kanban</a></li>
                 <li><a>Activity</a></li>
                 <li><a>Calendar</a></li>
