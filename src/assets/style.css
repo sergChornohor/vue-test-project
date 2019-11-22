@@ -146,7 +146,7 @@ h3 {
   height: 40px;
   border-radius: 3px;
   background-color: #FFC200;
-  background-image: url("../image/Shapes@2x.png");
+  background-image: url("../assets/image/Shapes@2x.png");
   background-size: cover; }
   @media only screen and (max-width: 1023px) {
     .header-container-menu-head::before {
@@ -202,11 +202,11 @@ h3 {
         @media only screen and (max-width: 791px) {
           .header-container-menu-nav menu li a {
             font-size: 14px; } }
-      .header-container-menu-nav menu li a:hover {
+      .header-container-menu-nav menu li a:hover, .header-container-menu-nav menu li .active {
         color: #000;
         opacity: 1;
         cursor: pointer; }
-      .header-container-menu-nav menu li a:hover::before {
+      .header-container-menu-nav menu li a:hover::before, .header-container-menu-nav menu li .active::before {
         content: '';
         position: absolute;
         width: 100%;
@@ -280,13 +280,13 @@ h3 {
       height: 20px; } }
 
 .icon:first-child {
-  background-image: url(../image/user1.svg); }
+  background-image: url(../assets/image/user1.svg); }
 
 .icon:nth-child(2) {
-  background-image: url(../image/user2.svg); }
+  background-image: url(../assets/image/user2.svg); }
 
 .icon:nth-child(3) {
-  background-image: url(../image/user3.svg); }
+  background-image: url(../assets/image/user3.svg); }
 
 .header-container-activity-button {
   width: 75px;
@@ -328,7 +328,7 @@ h3 {
 .chat-icon {
   width: 16px;
   height: 16px;
-  background-image: url(../image/CombinedShape@1x.svg); }
+  background-image: url(../assets/image/CombinedShape@1x.svg); }
 
 /* CONTENT */
 .content-container {
@@ -344,7 +344,7 @@ h3 {
 
 .content-container-data {
   flex-direction: column;
-  width: 60%;
+  width: 75%;
   padding: 3%;
   border-radius: 8px;
   margin: 30px 0;
@@ -403,15 +403,15 @@ h3 {
 
 .mark::before {
   background-color: #CEF9C6;
-  background-image: url(../image/Icon@3x.svg); }
+  background-image: url(../assets/image/Icon@3x.svg); }
 
 .comment::before {
   background-color: #FFF8DD;
-  background-image: url(../image/message.svg); }
+  background-image: url(../assets/image/message.svg); }
 
 .upload::before {
   background-color: #E3EFFF;
-  background-image: url(../image/download.svg); }
+  background-image: url(../assets/image/download.svg); }
 
 .inform {
   width: 80%;
@@ -460,16 +460,16 @@ h3 {
       height: 70px; } }
 
 .uploaded-photo:first-child {
-  background-image: url(../image/nature-1.jpg); }
+  background-image: url(../assets/image/nature-1.jpg); }
 
 .uploaded-photo:nth-child(2) {
-  background-image: url(../image/nature-2.jpg); }
+  background-image: url(../assets/image/nature-2.jpg); }
 
 .uploaded-photo:nth-child(3) {
-  background-image: url(../image/nature-3.jpg); }
+  background-image: url(../assets/image/nature-3.jpg); }
 
 .uploaded-photo:nth-child(4) {
-  background-image: url(../image/nature-4.jpg); }
+  background-image: url(../assets/image/nature-4.jpg); }
 
 /* SIDE-MENU */
 .side-menu {

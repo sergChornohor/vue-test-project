@@ -8,9 +8,9 @@
             </div>
             <div class="header-container-menu-nav">
               <menu class="flex space-between">
-                <li><a @click.prevent="$emit('clickTasks', $event)">Tasks</a></li>
+                <router-link tag="li" to="/"><a @click="$event.target.classList.toggle('active')">Tasks</a></router-link>
                 <li><a>Kanban</a></li>
-                <li><a>Activity</a></li>
+                <router-link tag="li" to="/activity"><a>Activity</a></router-link>
                 <li><a>Calendar</a></li>
                 <li><a>Files</a></li> 
               </menu>
@@ -34,8 +34,18 @@
 
 <script>
 export default {
-  name: 'Header'
-
+  name: 'Header',
+  methods: {
+    addClass: function() {
+      this.activeClass = !this.activeClass;
+    }
+  }
 }
 
 </script>
+
+<style scoped>
+  a{
+    text-decoration: none;
+  }
+</style>

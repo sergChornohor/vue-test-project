@@ -2,10 +2,10 @@
   <div id="app">
     <div class="wrapper flex justify-center">
       <div class="content-wrapper">
-        <Header/> 
-        <Content  @clickTasks="activeBlock='tasksContainer'"/>
+        <Header/>
+        <Content />
       </div>
-    <sideMenu />
+    <SideBar />
     </div>
   </div>
 </template>
@@ -13,17 +13,12 @@
 <script>
 import Content from './components/Content.vue'
 import Header from './components/Header.vue'
-import sideMenu from './components/sideMenu.vue'
+import SideBar from './components/SideBar.vue'
 
 export default {
   name: 'app',
   components: {
-    Content, sideMenu, Header
-  },
-  data() {
-    return{
-
-    }
+    Content, SideBar, Header
   }
 }
 </script>

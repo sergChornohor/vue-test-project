@@ -21,6 +21,6 @@ let photo_array_listner = function(image, index) {
     }
 }
 
-for  (i = 0; i < photo_array.length; i++) {
+for  (let i = 0; i < photo_array.length; i++) {
     photo_array_listner(photo_array[i], i);
 }

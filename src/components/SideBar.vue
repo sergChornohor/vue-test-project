@@ -47,7 +47,7 @@
 <script>
 
 export default {
-  name: 'sideMenu',
+  name: 'SideBar',
 
   data() {
     return{
