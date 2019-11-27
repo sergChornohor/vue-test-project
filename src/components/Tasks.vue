@@ -1,31 +1,32 @@
 <template>
-    <div class="content-container-data-posts">
-        <div class="tasks-list">
-            <ul>
-                <li v-for="tasks in tasks" :key="tasks.title">
-                    <span>{{tasks.title}}</span>
-                    <span>{{tasks.description}}</span>
-                    <span>{{tasks.exTime}}</span>
-                </li>
-            </ul>
-        </div>
+    <div class="tasks-list">
+        <ul>
+            <li
+                v-for="tasks in tasks"
+                :key="tasks.title">
+                <span>{{tasks.title}}</span>
+                <span>{{tasks.description}}</span>
+                <span>{{tasks.exTime}}</span>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'tasksContainer',
+  name: 'tasksContainer',
 
-    data() {
-        return{
-        tasks: [
-            {title: 'toDo1', description: 'what I must to do', exTime: '12:30 PM'},
-            {title: 'toDo2', description: 'what I must to do', exTime: '12:30 PM'},
-            {title: 'toDo3', description: 'what I must to do', exTime: '12:30 PM'},
-            {title: 'toDo4', description: 'what I must to do', exTime: '12:30 PM'}
-        ]}
-    }
-}
+  data() {
+    return {
+      tasks: [
+        { title: 'toDo1', description: 'what I must to do', exTime: '12:30 PM' },
+        { title: 'toDo2', description: 'what I must to do', exTime: '12:30 PM' },
+        { title: 'toDo3', description: 'what I must to do', exTime: '12:30 PM' },
+        { title: 'toDo4', description: 'what I must to do', exTime: '12:30 PM' },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>

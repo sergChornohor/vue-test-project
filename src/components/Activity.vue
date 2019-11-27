@@ -1,29 +1,28 @@
 <template>
-     <div class="content-container-data-posts" id="posts">
-        <div class="post flex space-between mark"> 
-          <div class="text">{{post[0].text}}</div>
-        <span class="time">{{post[0].time}}</span>
-      </div>
-      <div class="post flex space-between comment">
-        <div class="text">{{post[1].text}}</div>
-        <span class="time">{{post[1].time}}</span>
-      </div>
-        <div class="post flex space-between inform">
-          <div class="text">{{post[2].text}}</div>
-        </div>
-        <div class="post felx  space-between upload">
-          <div class="upload-text flex space-between"> 
-            <div class="text">{{post[3].text}}</div>
-            <span class="time">{{post[3].time}}</span>
+     <div class="content-container-data-posts activity" id="posts">
+        <div class="post flex space-between"
+          v-for='(post, index) in posts'
+          :key="index"
+          :class="posts[index].postClass">
+          <div>
+            <div class="text">
+              {{posts[index].text}}
+            </div>
+            <span class="time">
+              {{posts[index].time}}
+            </span>
           </div>
-          <div class="uploaded-photos flex">
-            <div class="uploaded-photo" @click="a"></div>
-            <div class="uploaded-photo" @click="a"></div>
-            <div class="uploaded-photo" @click="a"></div>
-            <div class="uploaded-photo" @click="a"></div>
+          <div f-if="posts.imgs"
+            class="uploaded-photos flex">
+            <div class="uploaded-photo"
+              v-for='(img, index) in post.imgs'
+              :key="index"
+              :style = "{'background-image': 'url('+require('../assets/image/' + img)+')'}"
+              @click="$emit('imgClick', index)">
+            </div>
           </div>
         </div>
-      </div>
+    </div>
 </template>
 
 <script>
@@ -31,16 +30,141 @@
 export default {
   name: 'Activity',
   data() {
-    return{
-      date: "TODAY",
+    return {
+      date: 'TODAY',
       isHidden: false,
-      post: [
-        {text:"Darika Samak mark as done Listing on Product Hunt so that we can reach as many potential users", time:"12:30 PM"},
-        {text:"Emilee Simchenko commented on Account for teams and personal in bottom style", time:"12:30 PM"},
-        {text:"During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes", time:""},
-        {text:"Darika Samak uploaded 4 files on An option to search in current projects or in all projects", time:"18:30 PM"}
-      ]
-    }
-  }
-} 
+      posts: [
+        {
+          postClass: 'mark',
+          text: 'Darika Samak mark as done Listing on Product Hunt so that we can reach as many potential users',
+          time: '12:30 PM',
+        },
+        {
+          postClass: 'comment',
+          text: 'Emilee Simchenko commented on Account for teams and personal in bottom style',
+          time: '12:30 PM',
+        },
+        {
+          postClass: 'inform',
+          text: 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
+          time: '',
+        },
+        {
+          postClass: 'upload',
+          text: 'Darika Samak uploaded 4 files on An option to search in current projects or in all projects',
+          time: '18:30 PM',
+          imgs: [
+            'nature-1.jpg',
+            'nature-2.jpg',
+            'nature-3.jpg',
+            'nature-4.jpg',
+          ],
+        },
+      ],
+    };
+  },
+};
 </script>
+
+<style lang="scss" scoped>
+
+.content-container-data-posts {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+
+.post {
+  width: 100%;
+  margin-left: 20px;
+  padding: 25px; }
+
+.text {
+  width: 80%;
+  font-size: 16px;
+  color: #131313;
+  line-height: 20px; }
+
+.time {
+  width: 60px;
+  font-size: 14px;
+  color: #131313;
+  float: right;}
+
+.mark::before,
+.comment::before,
+.upload::before {
+  content: '';
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  transform: translateX(-50px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30% 30%; }
+  @media only screen and (max-width: 791px) {
+    .mark::before,
+    .comment::before,
+    .upload::before {
+      width: 30px;
+      height: 30px; } }
+
+.mark::before {
+  background-color: #CEF9C6;
+  background-image: url(../assets/image/Icon@3x.svg); }
+
+.comment::before {
+  background-color: #FFF8DD;
+  background-image: url(../assets/image/message.svg); }
+
+.upload::before {
+  background-color: #E3EFFF;
+  background-image: url(../assets/image/download.svg); }
+
+.inform {
+  width: 80%;
+  margin-left: 40px;
+  margin-right: 60px;
+  border-radius: 10px;
+  background-color: #F7F6F3; }
+
+.inform .text {
+  width: 100%; }
+
+.upload {
+  flex-direction: column; }
+
+.upload-text {
+  width: 100%;
+  flex-direction: row; }
+
+.uploaded-photos {
+
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start; }
+
+.uploaded-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-right: 10px;
+  background-size: 100%;
+  background-repeat: none;
+  cursor: pointer; }
+  @media only screen and (max-width: 1023px) {
+    .uploaded-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 7px;
+      margin-top: 20px;
+      margin-right: 2%; } }
+  @media only screen and (max-width: 791px) {
+    .uploaded-photo {
+      width: 70px;
+      height: 70px; } }
+
+</style>

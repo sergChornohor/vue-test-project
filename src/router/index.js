@@ -1,24 +1,23 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/activity',
     name: 'activity',
-    component: () => import('../components/Activity.vue')
+    component: () => import('../components/Activity.vue'),
   },
   {
     path: '/',
     name: 'tasks',
-
-    component: () => import('../components/Tasks.vue')
+    component: () => import('../components/Tasks.vue'),
   },
-]
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

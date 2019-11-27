@@ -14,9 +14,9 @@
 export default {
   name: 'Content',
   data() {
-    return{
-      date: "TODAY",
-    }
-  }
-} 
+    return {
+      date: 'TODAY',
+    };
+  },
+};
 </script>
