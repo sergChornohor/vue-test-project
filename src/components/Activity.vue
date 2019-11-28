@@ -1,28 +1,28 @@
 <template>
-     <div class="content-container-data-posts activity" id="posts">
-        <div class="post flex space-between"
-          v-for='(post, index) in posts'
-          :key="index"
-          :class="posts[index].postClass">
-          <div>
-            <div class="text">
-              {{posts[index].text}}
-            </div>
-            <span class="time">
-              {{posts[index].time}}
-            </span>
+    <div class="content-container-data-posts activity" id="posts">
+      <div class="post flex space-between"
+        v-for='(post, index) in posts'
+        :key="index"
+        :class="posts[index].postClass">
+        <div>
+          <div class="text">
+            {{posts[index].text}}
           </div>
-          <div f-if="posts.imgs"
-            class="uploaded-photos flex">
-            <div class="uploaded-photo"
-              v-for='(img, index) in post.imgs'
-              :key="index"
-              :style = "{'background-image': 'url('+require('../assets/image/' + img)+')'}"
-              @click="$emit('imgClick', index)">
-            </div>
+          <span class="time">
+            {{posts[index].time}}
+          </span>
+        </div>
+        <div f-if="posts.imgs"
+          class="uploaded-photos flex">
+          <div class="uploaded-photo"
+            v-for='(img, index) in post.imgs'
+            :key="index"
+            :style = "{'background-image': 'url('+require('../assets/image/' + img)+')'}"
+            @click="$emit('imgClick', index)">
           </div>
         </div>
-    </div>
+      </div>
+  </div>
 </template>
 
 <script>

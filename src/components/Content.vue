@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'Content',
+  name: 'TheContent',
   data() {
     return {
       date: 'TODAY',

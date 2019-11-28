@@ -1,8 +1,8 @@
 <template>
     <div class="wrapper flex justify-center">
         <div class="content-wrapper">
-            <Header/>
-            <Content
+            <TheHeader/>
+            <TheContent
               @imgClick="changeImgIndex($event)"/>
         </div>
         <SideBar
@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import Content from '../components/Content.vue';
-import Header from '../components/Header.vue';
+import TheContent from '../components/Content.vue';
+import TheHeader from '../components/Header.vue';
 import SideBar from '../components/SideBar.vue';
 
 export default {
   name: 'MainLayout',
   components: {
-    Content, SideBar, Header,
+    TheContent, SideBar, TheHeader,
   },
   data() {
     return {
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     changeImgIndex(index) {
-      this.notificationIndex = index;
+      this.$root.notificationIndex = index;
     },
   },
 };

@@ -23,5 +23,6 @@ export default {
 #app{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
   "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 400;}
+  font-weight: 400;
+  width: 100%;}
 </style>
