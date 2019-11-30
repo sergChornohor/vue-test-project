@@ -2,12 +2,16 @@
     <div class="wrapper flex justify-center">
         <div class="content-wrapper">
             <TheHeader/>
-            <TheContent
-              @imgClick="changeImgIndex($event)"/>
+            <TheContent @imgClick="changeImgIndex($event)"/>
         </div>
-        <SideBar
-          :notifications='notificationIndex'/>
+        <SideBar :notifications='notificationIndex'/>
     </div>
+  <!-- .wrapper.flex.justify-center
+    .content-wrapper
+      theheader
+        thecontent(@imgclick='changeImgIndex($event)')
+    sidebar(:notifications='notificationIndex') -->
+
 </template>
 
 <script>
@@ -26,8 +30,11 @@ export default {
     };
   },
   methods: {
-    changeImgIndex(index) {
-      this.$root.notificationIndex = index;
+    changeImgIndex() {
+      this.$root.$on('changeImgIndex', (index) => {
+        // console.log(this.$root);
+        this.notificationIndex = index;
+      });
     },
   },
 };

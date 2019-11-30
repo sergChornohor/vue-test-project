@@ -10,6 +10,14 @@
             </li>
         </ul>
     </div>
+  <!-- .tasks-list
+    ul
+      li(v-for='tasks in tasks',
+      :key='tasks.title')
+        span {{tasks.title}}
+        span {{tasks.description}}
+        span {{tasks.exTime}} -->
+
 </template>
 
 <script>

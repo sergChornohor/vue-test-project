@@ -18,11 +18,28 @@
             v-for='(img, index) in post.imgs'
             :key="index"
             :style = "{'background-image': 'url('+require('../assets/image/' + img)+')'}"
-            @click="$emit('imgClick', index)">
+            @click.prevent="this.$root.$emit('imgClick', index)">
           </div>
         </div>
       </div>
   </div>
+  <!-- //- #posts.content-container-data-posts.activity
+  //- .post.flex.space-between(
+  //-   v-for='(post, index) in posts',
+  //-   :key='index',
+  //-   :class='posts[index].postClass')
+  //-   div
+  //-     .text
+  //-       | {{posts[index].text}}
+  //-     span.time
+  //-       | {{posts[index].time}}
+  //-   .uploaded-photos.flex(
+          f-if='posts.imgs')
+  //-     .uploaded-photo(
+            v-for='(img, index) in post.imgs',
+  //-       :key='index',
+  //-       :style="{'background-image': 'url('+require('../assets/image/' + img)+')'}",
+  //-       @click.prevent="this.$root.$emit('imgClick', index)") -->
 </template>
 
 <script>

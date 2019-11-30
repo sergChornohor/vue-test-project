@@ -7,6 +7,11 @@
       <router-view></router-view>
     </div>
   </div>
+  <!-- .content-container.flex.justify-center
+  .content-container-data.flex.space-between.align-center
+    .date
+      h6 {{date}}
+    router-view -->
 </template>
 
 
