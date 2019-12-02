@@ -1,45 +1,21 @@
-<template>
-    <div class="content-container-data-posts activity" id="posts">
-      <div class="post flex space-between"
-        v-for='(post, index) in posts'
-        :key="index"
-        :class="posts[index].postClass">
-        <div>
-          <div class="text">
-            {{posts[index].text}}
-          </div>
-          <span class="time">
-            {{posts[index].time}}
-          </span>
-        </div>
-        <div f-if="posts.imgs"
-          class="uploaded-photos flex">
-          <div class="uploaded-photo"
-            v-for='(img, index) in post.imgs'
-            :key="index"
-            :style = "{'background-image': 'url('+require('../assets/image/' + img)+')'}"
-            @click.prevent="this.$root.$emit('imgClick', index)">
-          </div>
-        </div>
-      </div>
-  </div>
-  <!-- //- #posts.content-container-data-posts.activity
-  //- .post.flex.space-between(
-  //-   v-for='(post, index) in posts',
-  //-   :key='index',
-  //-   :class='posts[index].postClass')
-  //-   div
-  //-     .text
-  //-       | {{posts[index].text}}
-  //-     span.time
-  //-       | {{posts[index].time}}
-  //-   .uploaded-photos.flex(
+<template lang='pug'>
+#posts.content-container-data-posts.activity
+  .post.flex.space-between(
+    v-for='(post, index) in posts',
+    :key='index',
+    :class='posts[index].postClass')
+    div
+      .text
+        | {{posts[index].text}}
+      span.time
+        | {{posts[index].time}}
+    .uploaded-photos.flex(
           f-if='posts.imgs')
-  //-     .uploaded-photo(
+      .uploaded-photo(
             v-for='(img, index) in post.imgs',
-  //-       :key='index',
-  //-       :style="{'background-image': 'url('+require('../assets/image/' + img)+')'}",
-  //-       @click.prevent="this.$root.$emit('imgClick', index)") -->
+        :key='index',
+        :style="{'background-image': 'url('+require('../assets/image/' + img)+')'}",
+        @click="$parent.$emit('img-click', index)")
 </template>
 
 <script>

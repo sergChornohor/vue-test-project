@@ -1,29 +1,16 @@
-<template>
-    <div class="tasks-list">
-        <ul>
-            <li
-                v-for="tasks in tasks"
-                :key="tasks.title">
-                <span>{{tasks.title}}</span>
-                <span>{{tasks.description}}</span>
-                <span>{{tasks.exTime}}</span>
-            </li>
-        </ul>
-    </div>
-  <!-- .tasks-list
+<template lang='pug'>
+  .tasks-list
     ul
       li(v-for='tasks in tasks',
       :key='tasks.title')
         span {{tasks.title}}
         span {{tasks.description}}
-        span {{tasks.exTime}} -->
-
+        span {{tasks.exTime}}
 </template>
 
 <script>
 export default {
   name: 'tasksContainer',
-
   data() {
     return {
       tasks: [

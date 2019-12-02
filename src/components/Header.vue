@@ -1,43 +1,5 @@
-<template>
-  <header>
-    <div class="header-container flex space-between">
-      <div class="header-container-menu flex space-between">
-        <div class="header-container-menu-head flex space-between align-center">
-          <h3>Website Redesign</h3>
-          <button class="header-container-menu-head-etc flex flex-center">
-            <span class="etc"></span>
-          </button>
-        </div>
-        <div class="header-container-menu-nav">
-          <menu class="flex space-between">
-            <li
-              v-for='link in links'
-              :key="link.url">
-              <router-link
-                  :to="link.url"
-                  :exact="link.exact"
-                  active-class="active">{{link.title}}</router-link>
-            </li>
-          </menu>
-        </div>
-      </div>
-      <div class="header-container-activity flex space-between">
-        <div class="header-container-activity-icons flex space-between">
-          <div class="icon"></div>
-          <div class="icon"></div>
-          <div class="icon"></div>
-        </div>
-        <div class="header-container-activity-button flex flex-center share">
-          <span>Share</span>
-        </div>
-        <div class="header-container-activity-button flex flex-center chat space-between">
-          <div class="chat-icon"></div>
-          <span>Chat</span>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- header
+<template lang='pug'>
+header
   .header-container.flex.space-between
     .header-container-menu.flex.space-between
       .header-container-menu-head.flex.space-between.align-center
@@ -62,7 +24,7 @@
         span Share
       .header-container-activity-button.flex.flex-center.chat.space-between
         .chat-icon
-        span Chat -->
+        span Chat
 </template>
 
 <script>
