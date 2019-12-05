@@ -6,25 +6,28 @@
     SideBar(:notifications='notificationIndex')
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import Prop from 'vue-property-decorator';
 import TheContent from '../components/Content.vue';
 import TheHeader from '../components/Header.vue';
 import SideBar from '../components/SideBar.vue';
 
-export default {
+@Component({
   name: 'MainLayout',
   components: {
-    TheContent, SideBar, TheHeader,
+    TheContent,
+    SideBar,
+    TheHeader,
   },
-  data() {
-    return {
-      notificationIndex: 3,
-    };
-  },
-  methods: {
-    changeImgIndex(index) {
-      this.notificationIndex = index;
-    },
-  },
-};
+})
+export default class MainLayout extends Vue {
+  // @Prop({ default: 3 })
+  notificationIndex: number;
+
+  changeImgIndex(index: number) {
+    this.notificationIndex = index;
+  }
+}
 </script>

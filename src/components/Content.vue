@@ -7,13 +7,15 @@
 </template>
 
 
-<script>
-export default {
-  name: 'TheContent',
-  data() {
-    return {
-      date: 'TODAY',
-    };
-  },
-};
+<script lang='ts'>
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component({
+  name: 'Content',
+})
+
+export default class Content extends Vue {
+  date: string = 'TODAY';
+}
 </script>

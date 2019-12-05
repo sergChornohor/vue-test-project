@@ -44,34 +44,32 @@
         span#notifications {{notifications}}
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-export default {
+@Component({
   name: 'SideBar',
-  props: {
-    notifications: {
-      type: Number,
-      default: 3,
-    },
-  },
-  data() {
-    return {
-      loginPerson: 'Jean Gonzales',
-      personStatus: 'Product Owner',
-      compNumber: 372,
-      openNumber: 11,
-    };
-  },
-  methods: {
-    getTasksNumber() {
-      if (this.openNumber <= 0) {
-        alert('There is no open tasks');// eslint-disable-line no-alert
-      } else {
-        window.confirm('Are you sure you want to change the number of tasks?');
-        this.compNumber += 1;
-        this.openNumber -= 1;
-      }
-    },
-  },
-};
+})
+export default class SideBar extends Vue {
+  notifications: number = 3;
+
+  loginPerson: string = 'Jean Gonzales';
+
+  personStatus: string = 'Product Owner';
+
+  compNumber: number = 372;
+
+  openNumber: number = 9;
+
+  getTasksNumber() {
+    if (this.openNumber <= 0) {
+      alert('There is no open tasks');// eslint-disable-line no-alert
+    } else {
+      window.confirm('Are you sure you want to change the number of tasks?');
+      this.compNumber += 1;
+      this.openNumber -= 1;
+    }
+  }
+}
 </script>

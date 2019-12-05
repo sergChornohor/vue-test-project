@@ -8,20 +8,39 @@
         span {{tasks.exTime}}
 </template>
 
-<script>
-export default {
-  name: 'tasksContainer',
-  data() {
-    return {
-      tasks: [
-        { title: 'toDo1', description: 'what I must to do', exTime: '12:30 PM' },
-        { title: 'toDo2', description: 'what I must to do', exTime: '12:30 PM' },
-        { title: 'toDo3', description: 'what I must to do', exTime: '12:30 PM' },
-        { title: 'toDo4', description: 'what I must to do', exTime: '12:30 PM' },
-      ],
-    };
-  },
-};
+<script lang='ts'>
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import Tasks from '../types';
+
+@Component({
+  name: 'TasksContainer',
+})
+
+export default class TasksContainer extends Vue {
+  tasks: Array<Tasks> = [
+    {
+      title: 'toDo1',
+      description: 'what I must to do',
+      exTime: '12:30 PM',
+    },
+    {
+      title: 'toDo2',
+      description: 'what I must to do',
+      exTime: '12:30 PM',
+    },
+    {
+      title: 'toDo3',
+      description: 'what I must to do',
+      exTime: '12:30 PM',
+    },
+    {
+      title: 'toDo4',
+      description: 'what I must to do',
+      exTime: '12:30 PM',
+    },
+  ];
+}
 </script>
 
 <style scoped>

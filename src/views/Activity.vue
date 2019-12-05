@@ -18,45 +18,48 @@
         @click="$parent.$emit('img-click', index)")
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import ActivityPosts from '../types';
 
-export default {
+@Component({
   name: 'Activity',
-  data() {
-    return {
-      date: 'TODAY',
-      isHidden: false,
-      posts: [
-        {
-          postClass: 'mark',
-          text: 'Darika Samak mark as done Listing on Product Hunt so that we can reach as many potential users',
-          time: '12:30 PM',
-        },
-        {
-          postClass: 'comment',
-          text: 'Emilee Simchenko commented on Account for teams and personal in bottom style',
-          time: '12:30 PM',
-        },
-        {
-          postClass: 'inform',
-          text: 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
-          time: '',
-        },
-        {
-          postClass: 'upload',
-          text: 'Darika Samak uploaded 4 files on An option to search in current projects or in all projects',
-          time: '18:30 PM',
-          imgs: [
-            'nature-1.jpg',
-            'nature-2.jpg',
-            'nature-3.jpg',
-            'nature-4.jpg',
-          ],
-        },
+})
+
+export default class Activity extends Vue {
+  date: string = 'TODAY';
+
+  posts: Array<ActivityPosts> = [
+    {
+      postClass: 'mark',
+      text: 'Darika Samak mark as done Listing on Product Hunt so that we can reach as many potential users',
+      time: '12:30 PM',
+    },
+    {
+      postClass: 'comment',
+      text: 'Emilee Simchenko commented on Account for teams and personal in bottom style',
+      time: '12:30 PM',
+    },
+    {
+      postClass: 'inform',
+      text: 'During a project build, it is necessary to evaluate the product design and development against project requirements and outcomes',
+      time: '',
+    },
+    {
+      postClass: 'upload',
+      text: 'Darika Samak uploaded 4 files on An option to search in current projects or in all projects',
+      time: '18:30 PM',
+      imgs: [
+        'nature-1.jpg',
+        'nature-2.jpg',
+        'nature-3.jpg',
+        'nature-4.jpg',
       ],
-    };
-  },
-};
+    },
+  ];
+}
+
 </script>
 
 <style lang="scss" scoped>

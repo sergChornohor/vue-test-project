@@ -27,22 +27,24 @@ header
         span Chat
 </template>
 
-<script>
-export default {
-  name: 'TheHeader',
-  data() {
-    return {
-      links: [
-        { title: 'Tasks', url: '/', exact: true },
-        { title: 'Kanban', url: '/kanban' },
-        { title: 'Activity', url: '/activity' },
-        { title: 'Calendar', url: '/calendar' },
-        { title: 'Files', url: '/files' },
-      ],
-    };
-  },
-};
+<script lang='ts'>
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import HeaderLinks from '../types';
 
+@Component({
+  name: 'TheHeader',
+})
+
+export default class TheHeader extends Vue {
+  links: Array<HeaderLinks> = [
+    { title: 'Tasks', url: '/', exact: true },
+    { title: 'Kanban', url: '/kanban' },
+    { title: 'Activity', url: '/activity' },
+    { title: 'Calendar', url: '/calendar' },
+    { title: 'Files', url: '/files' },
+  ];
+}
 </script>
 
 <style scoped>
