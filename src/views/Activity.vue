@@ -21,7 +21,7 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import ActivityPosts from '../types';
+import { ActivityPosts } from '../types';
 
 @Component({
   name: 'Activity',

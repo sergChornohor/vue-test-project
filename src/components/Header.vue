@@ -30,7 +30,7 @@ header
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import HeaderLinks from '../types';
+import { HeaderLinks } from '../types';
 
 @Component({
   name: 'TheHeader',
@@ -39,10 +39,10 @@ import HeaderLinks from '../types';
 export default class TheHeader extends Vue {
   links: Array<HeaderLinks> = [
     { title: 'Tasks', url: '/', exact: true },
-    { title: 'Kanban', url: '/kanban' },
-    { title: 'Activity', url: '/activity' },
-    { title: 'Calendar', url: '/calendar' },
-    { title: 'Files', url: '/files' },
+    { title: 'Kanban', url: '/kanban', exact: false },
+    { title: 'Activity', url: '/activity', exact: false },
+    { title: 'Calendar', url: '/calendar', exact: false },
+    { title: 'Files', url: '/files', exact: false },
   ];
 }
 </script>

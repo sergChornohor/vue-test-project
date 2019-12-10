@@ -13,6 +13,6 @@ export interface ActivityPosts{
 
 export interface Tasks{
     title: string,
-    description: string, 
+    description: string,
     exTime: string,
 }

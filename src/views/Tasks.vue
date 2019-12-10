@@ -11,7 +11,7 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import Tasks from '../types';
+import { Tasks } from '../types';
 
 @Component({
   name: 'TasksContainer',
