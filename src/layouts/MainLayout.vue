@@ -8,8 +8,7 @@
 
 <script lang='ts'>
 import Vue from 'vue';
-import Component from 'vue-class-component';
-import Prop from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 import TheContent from '../components/Content.vue';
 import TheHeader from '../components/Header.vue';
 import SideBar from '../components/SideBar.vue';
@@ -23,8 +22,8 @@ import SideBar from '../components/SideBar.vue';
   },
 })
 export default class MainLayout extends Vue {
-  // @Prop({ default: 3 })
-  notificationIndex: number;
+  @Prop({ default: 3 })
+  notificationIndex!: number;
 
   changeImgIndex(index: number) {
     this.notificationIndex = index;
