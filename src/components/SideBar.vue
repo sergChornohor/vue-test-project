@@ -29,6 +29,9 @@
       h4#completed-number {{compNumber}}
       h6 Completed Tasks
     .side-menu-tasks-open.justify-center.flex-column
+      //- router-link(
+      //-   :to='link.url'
+      //- )
       h4#open-number {{openNumber}}
       h6 Open Tasks
   .side-menu-menu.padding-30px

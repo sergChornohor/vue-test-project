@@ -7,7 +7,7 @@ module.exports = {
 
   extends: [
     'plugin:vue/essential',
-    'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+    'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     '@vue/airbnb',
     '@vue/typescript',
   ],
@@ -19,8 +19,8 @@ module.exports = {
 
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    ecmaVersion:  2018,  // Allows for the parsing of modern ECMAScript features
-    sourceType:  'module',  // Allows for the use of imports
+    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
+    sourceType: 'module', // Allows for the use of imports
   },
 
   extends: [
