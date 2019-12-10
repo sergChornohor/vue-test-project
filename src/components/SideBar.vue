@@ -28,10 +28,10 @@
       @click='getTasksNumber')
       h4#completed-number {{compNumber}}
       h6 Completed Tasks
-    .side-menu-tasks-open.justify-center.flex-column
-      //- router-link(
-      //-   :to='link.url'
-      //- )
+    router-link(
+        tag='div'
+        :to='tasksurl'
+      ).side-menu-tasks-open.justify-center.flex-column
       h4#open-number {{openNumber}}
       h6 Open Tasks
   .side-menu-menu.padding-30px
@@ -64,6 +64,8 @@ export default class SideBar extends Vue {
   compNumber: number = 372;
 
   openNumber: number = 9;
+
+  tasksurl: string = '/';
 
   getTasksNumber() {
     if (this.openNumber <= 0) {
