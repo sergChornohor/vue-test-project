@@ -5,14 +5,14 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/activity',
-    name: 'activity',
-    component: () => import('../views/Activity.vue'),
-  },
-  {
     path: '/',
     name: 'tasks',
     component: () => import('../views/Tasks.vue'),
+  },
+  {
+    path: '/activity',
+    name: 'activity',
+    component: () => import('../views/Activity.vue'),
   },
   {
     path: '/kanban',
@@ -28,6 +28,11 @@ const routes = [
     path: '/files',
     name: 'files',
     component: () => import('../views/ComingSoon.vue'),
+  },
+  {
+    path: '/*',
+    name: '*',
+    component: () => import('../views/NotFound.vue'),
   },
 ];
 

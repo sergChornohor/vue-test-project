@@ -52,9 +52,9 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 @Component({
-  name: 'SideBar',
+  name: 'TheSideBar',
 })
-export default class SideBar extends Vue {
+export default class TheSideBar extends Vue {
   notifications: number = 3;
 
   loginPerson: string = 'Jean Gonzales';
@@ -71,7 +71,7 @@ export default class SideBar extends Vue {
     if (this.openNumber <= 0) {
       alert('There is no open tasks');// eslint-disable-line no-alert
     } else {
-      window.confirm('Are you sure you want to change the number of tasks?');
+      window.confirm('Are you sure you want to change the number of tasks?');// eslint-disable-next-line
       this.compNumber += 1;
       this.openNumber -= 1;
     }

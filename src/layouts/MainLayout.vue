@@ -3,21 +3,21 @@
     .content-wrapper
       TheHeader
       TheContent(@img-click='changeImgIndex($event)')
-    SideBar(:notifications='notificationIndex')
+    TheSideBar(:notifications='notificationIndex')
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import TheContent from '../components/Content.vue';
-import TheHeader from '../components/Header.vue';
-import SideBar from '../components/SideBar.vue';
+import TheContent from '../components/TheContent.vue';
+import TheHeader from '../components/TheHeader.vue';
+import TheSideBar from '../components/TheSideBar.vue';
 
 @Component({
   name: 'MainLayout',
   components: {
     TheContent,
-    SideBar,
+    TheSideBar,
     TheHeader,
   },
 })

@@ -11,10 +11,10 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 @Component({
-  name: 'Content',
+  name: 'TheContent',
 })
 
-export default class Content extends Vue {
+export default class TheContent extends Vue {
   date: string = 'TODAY';
 }
 </script>

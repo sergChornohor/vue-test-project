@@ -12,6 +12,7 @@
     "firebase": "^7.5.0",
     "node-sass": "^4.13.0",
     "pug-plain-loader": "^1.0.0",
+    "reflect-metadata": "^0.1.13",
     "sass-loader": "^8.0.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
