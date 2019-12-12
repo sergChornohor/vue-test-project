@@ -71,8 +71,8 @@ export default class TheSideBar extends Vue {
   getTasksNumber() {
     if (this.openNumber <= 0) {
       alert('There is no open tasks');// eslint-disable-line no-alert
-    } else {
-      window.confirm('Are you sure you want to change the number of tasks?');// eslint-disable-next-line
+    } else { // eslint-disable-next-line
+      window.confirm('Are you sure you want to change the number of tasks?');
       this.compNumber += 1;
       this.openNumber -= 1;
     }
