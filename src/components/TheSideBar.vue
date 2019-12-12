@@ -44,18 +44,19 @@
         a My tasks
       li
         a Notifications
-        span#notifications {{notifications}}
+        span#notifications {{notificationIndex}}
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Component, Prop } from 'vue-property-decorator';
 
 @Component({
   name: 'TheSideBar',
 })
 export default class TheSideBar extends Vue {
-  notifications: number = 3;
+  @Prop({ default: 3 })
+  notificationIndex!: Number;
 
   loginPerson: string = 'Jean Gonzales';
 
