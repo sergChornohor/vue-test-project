@@ -22,10 +22,10 @@ export default class ComingSoon extends Vue {
         display: flex;
         justify-content: space-around;
         align-content: center;
-    }
-    h1{
-        font-size: 30px;
-        margin: auto;
-        vertical-align: center;
+      h1{
+          font-size: 30px;
+          margin: auto;
+          vertical-align: center;
+      }
     }
 </style>

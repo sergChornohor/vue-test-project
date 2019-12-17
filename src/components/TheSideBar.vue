@@ -28,9 +28,13 @@
       @click='getTasksNumber')
       h4#completed-number {{compNumber}}
       h6 Completed Tasks
-    router-link(
+    router-link(v-if='openNumber !== 0'
         tag='div'
         :to='tasksurl'
+      ).side-menu-tasks-open.justify-center.flex-column
+      h4#open-number {{openNumber}}
+      h6 Open Tasks
+    div(v-else
       ).side-menu-tasks-open.justify-center.flex-column
       h4#open-number {{openNumber}}
       h6 Open Tasks
