@@ -2,8 +2,13 @@
   .wrapper.flex.justify-center
     .content-wrapper
       TheHeader
-      TheContent(@img-click='changeImgIndex($event)')
-    TheSideBar(:notificationIndex='notifications')
+      TheContent(
+        @img-click='changeImgIndex($event)'
+        @tasks-change='changeOpenTasksNumber($event)')
+    TheSideBar(
+      :notificationIndex='notifications'
+      :openNumber='openTasks'
+      :compNumber='closeTask')
 </template>
 
 <script lang='ts'>
@@ -22,10 +27,24 @@ import TheSideBar from '../components/TheSideBar.vue';
   },
 })
 export default class MainLayout extends Vue {
-  notifications: Number = 3;
+  notifications: number = 3;
 
-  changeImgIndex(index: Number) {
+  openTasks: number = 4;
+
+  closeTask: number = 372;
+
+  changeImgIndex(index: number) {
     this.notifications = index;
+  }
+
+  changeOpenTasksNumber(index: number) {
+    if (this.openTasks > index) {
+      this.openTasks = index;
+      this.closeTask = this.closeTask - 1;
+    } else {
+      this.openTasks = index;
+      this.closeTask = this.closeTask + 1;
+    }
   }
 }
 </script>

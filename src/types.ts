@@ -12,7 +12,7 @@ export interface ActivityPosts{
 }
 
 export interface Tasks{
-    index: number,
+    // indexNumber: number,
     title: string,
     description: string,
     exTime: string,

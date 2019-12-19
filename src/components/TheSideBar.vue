@@ -59,20 +59,19 @@ import { Component, Prop } from 'vue-property-decorator';
   name: 'TheSideBar',
 })
 export default class TheSideBar extends Vue {
-  @Prop({ default: 3 })
-  notificationIndex!: Number;
+  @Prop({ default: 3 }) notificationIndex!: number;
+
+  @Prop({}) openNumber!: number;
+
+  @Prop({}) compNumber!: number;
 
   loginPerson: string = 'Jean Gonzales';
 
   personStatus: string = 'Product Owner';
 
-  compNumber: number = 372;
-
-  openNumber: number = 9;
-
   tasksurl: string = '/';
 
-  getTasksNumber() {
+  getTasksNumber(): void {
     if (this.openNumber <= 0) {
       alert('There is no open tasks');// eslint-disable-line no-alert
     } else { // eslint-disable-next-line

@@ -6,10 +6,10 @@
       button()
     .tasks-list
       ul
-        li(v-for='tasks in tasks',
+        li(v-for='(tasks, index) in tasks',
         :key='tasks.title')
           div
-            span.index {{tasks.index}}
+            span.index {{index + 1}}
             span.title {{tasks.title}}
             span.description {{tasks.description}}
             span.exTime {{tasks.exTime}}
@@ -32,45 +32,48 @@ export default class TasksContainer extends Vue {
 
   tasks: Array<Tasks> = [
     {
-      index: 1,
       title: 'toDo4',
       description: 'what I must to do',
       exTime: '12:30 PM',
     },
     {
-      index: 2,
       title: 'toDo3',
       description: 'what I must to do',
       exTime: '12:30 PM',
     },
     {
-      index: 3,
       title: 'toDo2',
       description: 'what I must to do',
       exTime: '12:30 PM',
     },
     {
-      index: 4,
       title: 'toDo1',
       description: 'what I must to do',
       exTime: '12:30 PM',
     },
   ];
 
+  mounted(): void {
+    this.$emit('tasks-change', this.tasks.length);
+  }
+
   addTask(): void {
-    this.tasks.push({
-      index: this.tasks.length + 1,
-      title: this.newTasksTitle,
-      description: this.newTasksDescription,
-      exTime: '12:30 PM',
-    });
+    if (this.newTasksTitle && this.newTasksDescription) {
+      this.tasks.push({
+        title: this.newTasksTitle,
+        description: this.newTasksDescription,
+        exTime: '12:30 PM',
+      });
+    }
 
     this.newTasksTitle = '';
     this.newTasksDescription = '';
+    this.$parent.$emit('tasks-change', this.tasks.length);
   }
 
   deleteTask(index: number): void{
     this.tasks.splice(index, 1);
+    this.$parent.$emit('tasks-change', this.tasks.length);
   }
 }
 </script>
@@ -111,7 +114,6 @@ export default class TasksContainer extends Vue {
             display: flex;
             justify-content: space-between;
             width: 90%;
-          }
             span{
               font-size: 18px;
             }
@@ -128,6 +130,7 @@ export default class TasksContainer extends Vue {
               font-size: 14px;
               width: 15%;
             }
+          }
           button{
             width: 20px;
             height: 20px;
