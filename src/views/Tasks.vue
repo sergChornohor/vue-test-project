@@ -1,8 +1,9 @@
 <template lang='pug'>
   .tasks
     form(@submit.prevent='addTask')
-      input(v-model='newTasksTitle' value='title' placeholder='title')
-      input(v-model='newTasksDescription' value='description' placeholder='description')
+      label(for='title') new
+      input.title(v-model='newTasksTitle' value='title' placeholder='title')
+      input.description(v-model='newTasksDescription' value='description' placeholder='description')
       button()
     .tasks-list
       ul
@@ -53,6 +54,11 @@ export default class TasksContainer extends Vue {
     },
   ];
 
+  beforeCreated(): void {
+    console.log(this.tasks);
+    this.$nextTick(() => document.body.classList.add('animations'));
+  }
+
   mounted(): void {
     this.$emit('tasks-change', this.tasks.length);
   }
@@ -88,8 +94,18 @@ export default class TasksContainer extends Vue {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 3% 0 10%;
+      padding: 0 3% 0 5%;
       margin-bottom: 10px;
+      .title{
+        width: 30%;
+      }
+      .description{
+        width: 50%;
+      }
+      label{
+        font-size: 120%;
+        color: red;
+      }
       button{
         width: 20px;
         height: 20px;
@@ -129,6 +145,9 @@ export default class TasksContainer extends Vue {
             .exTime{
               font-size: 14px;
               width: 15%;
+            }
+            .animations{
+              transform: scale(1.5);
             }
           }
           button{

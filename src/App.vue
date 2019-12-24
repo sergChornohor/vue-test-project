@@ -16,15 +16,6 @@ import MainLayout from './layouts/MainLayout.vue';
 })
 
 export default class App extends Vue {}
-
-// import MainLayout from './layouts/MainLayout.vue';
-
-// export default {
-//   name: 'app',
-//   components: {
-//     MainLayout,
-//   },
-// };
 </script>
 
 <style lang="scss" scoped>
