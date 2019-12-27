@@ -12,7 +12,7 @@
     .uploaded-photos.flex(
           f-if='posts.imgs')
       .uploaded-photo(
-            v-for='(img, index) in post.imgs',
+        v-for='(img, index) in post.imgs',
         :key='index',
         :style="{'background-image': 'url('+require('../assets/image/' + img)+')'}",
         @click="$parent.$emit('img-click', index)")

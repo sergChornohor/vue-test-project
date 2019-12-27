@@ -9,7 +9,7 @@
       ul
         li(v-for='(tasks, index) in tasks',
         :key='tasks.title')
-          div
+          div.taskLine
             span.index {{index + 1}}
             span.title {{tasks.title}}
             span.description {{tasks.description}}
@@ -31,36 +31,49 @@ export default class TasksContainer extends Vue {
 
   newTasksDescription: string = '';
 
-  tasks: Array<Tasks> = [
-    {
-      title: 'toDo4',
-      description: 'what I must to do',
-      exTime: '12:30 PM',
-    },
-    {
-      title: 'toDo3',
-      description: 'what I must to do',
-      exTime: '12:30 PM',
-    },
-    {
-      title: 'toDo2',
-      description: 'what I must to do',
-      exTime: '12:30 PM',
-    },
-    {
-      title: 'toDo1',
-      description: 'what I must to do',
-      exTime: '12:30 PM',
-    },
-  ];
+  tasks: Array<Tasks> = [];
 
-  beforeCreated(): void {
-    console.log(this.tasks);
-    this.$nextTick(() => document.body.classList.add('animations'));
+  created(): void {
+    this.tasks = [
+      {
+        title: 'toDo4',
+        description: 'what I must to do',
+        exTime: '12:30 PM',
+      },
+      {
+        title: 'toDo3',
+        description: 'what I must to do',
+        exTime: '12:30 PM',
+      },
+      {
+        title: 'toDo2',
+        description: 'what I must to do',
+        exTime: '12:30 PM',
+      },
+      {
+        title: 'toDo1',
+        description: 'what I must to do',
+        exTime: '12:30 PM',
+      },
+    ];
   }
 
   mounted(): void {
     this.$emit('tasks-change', this.tasks.length);
+
+    const zoomEl = this.$el.querySelectorAll('.taskLine');
+    zoomEl.forEach((el, index) => {
+      setTimeout(() => {
+        zoomEl[index].classList.add('animations');
+      }, 1500 * index);
+    });
+  }
+
+  beforeUpdate(): void {
+    const zoomEl = this.$el.querySelectorAll('.taskLine');
+    zoomEl.forEach((el, index) => {
+      zoomEl[index].classList.remove('animations');
+    });
   }
 
   addTask(): void {
@@ -70,6 +83,8 @@ export default class TasksContainer extends Vue {
         description: this.newTasksDescription,
         exTime: '12:30 PM',
       });
+      // const tasksLength = this.tasks.length;
+      // this.tasks[tasksLength].classList.add('.blinded');
     }
 
     this.newTasksTitle = '';
@@ -126,7 +141,8 @@ export default class TasksContainer extends Vue {
           align-items: center;
           width: 100%;
           height: 40px;
-          div{
+          transition: 0.5s;
+          .taskLine{
             display: flex;
             justify-content: space-between;
             width: 90%;
@@ -146,9 +162,17 @@ export default class TasksContainer extends Vue {
               font-size: 14px;
               width: 15%;
             }
-            .animations{
-              transform: scale(1.5);
+            @keyframes zoomElement {
+             50% {transform: scale(1.2)}
+             100% {transform: scale(1)}
             }
+          }
+          .animations{
+            animation-name: zoomElement;
+            animation-duration: 1.5s;
+            animation-delay: 1s;
+            animation-iteration-count: 1;
+            animation-direction: alternate;
           }
           button{
             width: 20px;
@@ -160,6 +184,10 @@ export default class TasksContainer extends Vue {
             background-repeat: no-repeat;
             background-size: 100%;
           }
+        }
+        li:hover{
+          background-color: #F7F6F3;
+          border-radius: 15px;
         }
       }
     }
