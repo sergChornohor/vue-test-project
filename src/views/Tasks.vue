@@ -83,13 +83,16 @@ export default class TasksContainer extends Vue {
         description: this.newTasksDescription,
         exTime: '12:30 PM',
       });
-      // const tasksLength = this.tasks.length;
-      // this.tasks[tasksLength].classList.add('.blinded');
     }
 
     this.newTasksTitle = '';
     this.newTasksDescription = '';
     this.$parent.$emit('tasks-change', this.tasks.length);
+
+    this.$nextTick(() => {
+      const tasksLength = this.$el.querySelector('li:last-child');
+      if (tasksLength != null) tasksLength.classList.add('blinking');
+    });
   }
 
   deleteTask(index: number): void{
@@ -135,6 +138,7 @@ export default class TasksContainer extends Vue {
       width: 100%;
       padding: 3%;
       ul{
+        transition: 0.5s;
         li{
           display: flex;
           justify-content: space-between;
@@ -162,10 +166,10 @@ export default class TasksContainer extends Vue {
               font-size: 14px;
               width: 15%;
             }
-            @keyframes zoomElement {
-             50% {transform: scale(1.2)}
-             100% {transform: scale(1)}
-            }
+          }
+          @keyframes zoomElement {
+            50% {transform: scale(1.2)}
+            100% {transform: scale(1)}
           }
           .animations{
             animation-name: zoomElement;
@@ -188,6 +192,18 @@ export default class TasksContainer extends Vue {
         li:hover{
           background-color: #F7F6F3;
           border-radius: 15px;
+        }
+        @keyframes blinkElement {
+          // 0% {opacity: 0; color: black}
+          50% {opacity: .5; color: green}
+          100% {opacity: 1; color: black}
+        }
+        .blinking{
+          animation-name: blinkElement;
+          animation-duration: 1.5s;
+          animation-delay: .5s;
+          animation-iteration-count: 5;
+          animation-direction: alternate;
         }
       }
     }
