@@ -16,4 +16,5 @@ export interface Tasks{
     title: string,
     description: string,
     exTime: string,
+    status: string,
 }
