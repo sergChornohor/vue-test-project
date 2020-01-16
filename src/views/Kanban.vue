@@ -1,33 +1,47 @@
 <template lang='pug'>
-  .task-cards-template
-    .task-cards
-      .task-card(
-        v-for='(tasks, index) in tasks'
-        :key='tasks.title'
-        v-if='tasks.status'
-      ) {{tasks.title}}
-
+  table.task-cards
+    thead
+      th(v-for='(status, index) in tableStatus'
+      :key='index') {{status}}
+    tbody
+      tr.task-status(v-for='(status, index) in tableStatus'
+      :key='index')
+        td(
+        v-for='(tasks, index) in tasksStore',
+        :key='tasks.title')
+          .task-card(
+            v-if='tasks.status === status'
+          ) {{tasks.title}} :: {{tasks.exTime}}
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
-import { Tasks } from '../types';
+import { Component, Prop } from 'vue-property-decorator';
+import TasksContainer from './Tasks.vue';
+import { Tasks, Status } from '../types';
 
-export default class Kanban extends Vue {
-tasks: Array<Tasks> = [];
+export default class KanbanTable extends Vue {
+  sessionStore: any = sessionStorage.getItem('tasks');
+
+  tasksStore: any = JSON.parse(this.sessionStore);
+
+  tableStatus: object = Status;
 }
 </script>
 
 <style lang="scss" scoped>
-  .task-card-template{
-    display: flex;
-    width: 100%;
     .task-cards{
-      padding: 5%;
-      .task-card{
-        width: 30%;
+      width: 100%;
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 15px;
+      tbody{
+        .task-status{
+          width: 33%;
+          padding: 5%;
+          line-height: 15px;
+          font-weight: normal;
+        }
       }
     }
-  }
 </style>
