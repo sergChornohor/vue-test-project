@@ -11,7 +11,7 @@
         :key='tasks.title')
           .task-card(
             v-if='tasks.status === status'
-          ) {{tasks.title}} : {{tasks.exTime}}
+          ) {{tasks.title}} :: {{tasks.exTime}}
 </template>
 
 <script lang="ts">
