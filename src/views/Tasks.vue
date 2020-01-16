@@ -10,7 +10,8 @@
         thead
           th(v-for='(title, index) in tableHead' :key='index') {{title}}
         tbody
-          tr.taskLine(v-for='(tasks, index) in tasks',
+          tr.taskLine(:tasks = tasks
+            v-for='(tasks, index) in tasks',
             :key='tasks.title')
             td.index {{index + 1}}
             td.title {{tasks.title}}
@@ -18,19 +19,18 @@
             td.exTime {{tasks.exTime}}
             td.status
               select(
-                v-model='tasks.status'
-                v-if="tasks.status === 'todo'")
-                option todo
-                option inprogress
-                option done
+                v-model='tasks.status')
+                option(selected :value='Status.ToDo') todo
+                option(:value='Status.InProgress') inprogress
+                option(:value='Status.Done') done
               //- select(v-else-if="tasks.status === 'inprogress'")
               //-   option inprogress
               //-   option todo
               //-   option done
-              select(v-else)
-                option done
-                option todo
-                option inprogress
+              //- select(v-else)
+              //-   option done
+              //-   option todo
+              //-   option inprogress
             td
               button.del(@click='deleteTask(index)')
 </template>
@@ -38,7 +38,7 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Tasks } from '../types';
+import { Tasks, Status } from '../types';
 
 const tableHead: string[] = ['№', 'Title', 'Description', 'Deadline', 'Status'];
 
@@ -53,7 +53,11 @@ export default class TasksContainer extends Vue {
 
   newTasksDescription: string = '';
 
+  Status: object = Status;
+
   tasks: Array<Tasks> = [];
+
+  sessionStore: any = '';
 
   created(): void {
     this.tasks = [
@@ -61,24 +65,32 @@ export default class TasksContainer extends Vue {
         title: 'toDo4',
         description: 'what I must to do',
         exTime: '12:30 PM',
-        status: 'todo',
+        status: Status.ToDo,
       },
       {
         title: 'toDo3',
         description: 'what I must to do',
         exTime: '12:30 PM',
-        status: 'inprogress',
+        status: Status.InProgress,
       },
       {
         title: 'toDo2',
         description: 'what I must to do',
         exTime: '12:30 PM',
-        status: 'done',
+        status: Status.Done,
       },
     ];
   }
 
   mounted(): void {
+    if (sessionStorage.getItem('tasks')) {
+      try {
+        this.tasks = JSON.parse(sessionStorage.getItem('tasks') || '{}');
+      } catch (e) {
+        sessionStorage.removeItem('tasks');
+      }
+    }
+
     this.$emit('tasks-change', this.tasks.length);
 
     const zoomEl = this.$el.querySelectorAll('.taskLine');
@@ -102,12 +114,13 @@ export default class TasksContainer extends Vue {
         title: this.newTasksTitle,
         description: this.newTasksDescription,
         exTime: '12:30 PM',
-        status: 'todo',
+        status: Status.ToDo,
       });
     }
 
     this.newTasksTitle = '';
     this.newTasksDescription = '';
+    this.saveTasks();
     this.$parent.$emit('tasks-change', this.tasks.length);
 
     this.$nextTick(() => {
@@ -119,6 +132,11 @@ export default class TasksContainer extends Vue {
   deleteTask(index: number): void{
     this.tasks.splice(index, 1);
     this.$parent.$emit('tasks-change', this.tasks.length);
+  }
+
+  saveTasks(): void{
+    const parsed = JSON.stringify(this.tasks);
+    this.sessionStore = sessionStorage.setItem('tasks', parsed);
   }
 }
 </script>

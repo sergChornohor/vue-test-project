@@ -12,9 +12,14 @@ export interface ActivityPosts{
 }
 
 export interface Tasks{
-    // indexNumber: number,
     title: string,
     description: string,
     exTime: string,
     status: string,
+}
+
+export enum Status{
+    ToDo = 'To Do',
+    InProgress = 'In Progress',
+    Done = 'Done'
 }
