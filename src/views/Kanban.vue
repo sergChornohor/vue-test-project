@@ -4,14 +4,15 @@
       th(v-for='(status, index) in tableStatus'
       :key='index') {{status}}
     tbody
-      tr.task-status(v-for='(status, index) in tableStatus'
+      td.task-status(v-for='(status, index) in tableStatus'
       :key='index')
-        td(
-        v-for='(tasks, index) in tasksStore',
-        :key='tasks.title')
-          .task-card(
-            v-if='tasks.status === status'
-          ) {{tasks.title}} :: {{tasks.exTime}}
+        tr(
+        v-for='(tasks, index) in tasksStore'
+        :key='tasks.title'
+        v-if='tasks.status === status')
+          .task-card
+            span {{tasks.title}} :
+            span {{tasks.exTime}}
 </template>
 
 <script lang="ts">
@@ -37,10 +38,19 @@ export default class KanbanTable extends Vue {
       margin-top: 15px;
       tbody{
         .task-status{
-          width: 33%;
-          padding: 5%;
+          width: 31%;
+          padding: 2.5%;
           line-height: 15px;
           font-weight: normal;
+          tr{
+            width: 100%;
+            .task-card{
+              width: 100%;
+              line-height: 25px;
+              display: flex;
+              justify-content: space-between;
+            }
+          }
         }
       }
     }
