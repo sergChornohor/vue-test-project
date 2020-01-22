@@ -1,10 +1,6 @@
 <template lang='pug'>
   .tasks
-    form(@submit.prevent='addTask')
-      label(for='title') new
-      input.title(v-model='newTasksTitle' value='title' placeholder='title')
-      input.description(v-model='newTasksDescription' value='description' placeholder='description')
-      button()
+    button.add(@click='showAddTaskForm')
     .tasks-list
       table
         thead
@@ -14,36 +10,32 @@
             v-for='(tasks, index) in tasks',
             :key='tasks.title')
             td.index {{index + 1}}
+            td.status {{tasks.status}}
             td.title {{tasks.title}}
             td.description {{tasks.description}}
             td.exTime {{tasks.exTime}}
-            td.status
-              select(
-                v-model='tasks.status')
-                option(selected :value='Status.ToDo') todo
-                option(:value='Status.InProgress') inprogress
-                option(:value='Status.Done') done
-              //- select(v-else-if="tasks.status === 'inprogress'")
-              //-   option inprogress
-              //-   option todo
-              //-   option done
-              //- select(v-else)
-              //-   option done
-              //-   option todo
-              //-   option inprogress
             td
               button.del(@click='deleteTask(index)')
+    addTask(v-if='showAddForm'
+      @close-window='showAddForm = false'
+      @add-task='addTask'
+      :newTasksTitle='newTasksTitle'
+      :newTasksDescription='newTasksDescription')
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Tasks, Status } from '../types';
+import addTask from '../components/AddTaskModal.vue';
 
-const tableHead: string[] = ['№', 'Title', 'Description', 'Deadline', 'Status'];
+const tableHead: string[] = ['№', 'Status', 'Title', 'Description', 'Deadline'];
 
 @Component({
   name: 'TasksContainer',
+  components: {
+    addTask,
+  },
 })
 
 export default class TasksContainer extends Vue {
@@ -58,6 +50,8 @@ export default class TasksContainer extends Vue {
   tasks: Array<Tasks> = [];
 
   sessionStore: any = '';
+
+  showAddForm: boolean = false;
 
   created(): void {
     this.tasks = [
@@ -108,6 +102,10 @@ export default class TasksContainer extends Vue {
     });
   }
 
+  showAddTaskForm(): void {
+    this.showAddForm = true;
+  }
+
   addTask(): void {
     if (this.newTasksTitle && this.newTasksDescription) {
       this.tasks.push({
@@ -131,6 +129,7 @@ export default class TasksContainer extends Vue {
 
   deleteTask(index: number): void{
     this.tasks.splice(index, 1);
+    this.saveTasks();
     this.$parent.$emit('tasks-change', this.tasks.length);
   }
 
@@ -145,33 +144,14 @@ export default class TasksContainer extends Vue {
   .tasks{
     width: 100%;
     float: left;
-    form{
-      width: 100%;
-      height: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 3% 0 5%;
-      margin-bottom: 10px;
-      .title{
-        width: 30%;
-      }
-      .description{
-        width: 50%;
-      }
-      label{
-        font-size: 120%;
-        color: red;
-      }
-      button{
-        width: 20px;
-        height: 20px;
-        border-radius: 3px;
-        border-style: none;
-        background-color: #fff;
-        background-image: url('../assets/image/add_1.svg');
-        background-repeat: no-repeat;
-      }
+    .add{
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      border-style: none;
+      background-color: #fff;
+      background-image: url('../assets/image/add_1.svg');
+      background-repeat: no-repeat;
     }
     .tasks-list{
       width: 100%;
@@ -192,7 +172,7 @@ export default class TasksContainer extends Vue {
             width: 5%;
           }
           .title{
-            width: 20%;
+            width: 18%;
           }
           .description{
             width: 40%;
@@ -202,14 +182,11 @@ export default class TasksContainer extends Vue {
             width: 15%;
           }
           .status{
-            width: 5%;
-            font-size: 15px;
+            width: 7%;
+            font-size: 13px;
+            line-height: 20px;
             display: flex;
             align-content: center;
-            select{
-              width: 40px;
-              border-radius: 5px;
-            }
           }
           .del{
             width: 20px;
