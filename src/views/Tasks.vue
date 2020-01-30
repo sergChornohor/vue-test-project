@@ -18,14 +18,13 @@
               button.del(@click='deleteTask(index)')
     addTask(v-if='showAddForm'
       @close-window='showAddForm = false'
-      @add-task='addTask'
-      :newTasksTitle='newTasksTitle'
-      :newTasksDescription='newTasksDescription')
+      @add-task="(...args)=>this.addTask(...args)"
+      )
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Component, Prop } from 'vue-property-decorator';
 import { Tasks, Status } from '../types';
 import addTask from '../components/AddTaskModal.vue';
 
@@ -39,11 +38,11 @@ const tableHead: string[] = ['№', 'Status', 'Title', 'Description', 'Deadline'
 })
 
 export default class TasksContainer extends Vue {
+  @Prop({}) TasksTitle!: string;
+
+  @Prop({}) TasksDescription!: string;
+
   tableHead: string[] = tableHead;
-
-  newTasksTitle: string = '';
-
-  newTasksDescription: string = '';
 
   Status: object = Status;
 
@@ -106,18 +105,20 @@ export default class TasksContainer extends Vue {
     this.showAddForm = true;
   }
 
-  addTask(): void {
-    if (this.newTasksTitle && this.newTasksDescription) {
+  addTask(newTaskTitle: any, newTaskDescription: any): void {
+    this.TasksTitle = newTaskTitle;
+    this.TasksDescription = newTaskDescription;
+    if (this.TasksTitle && this.TasksDescription) {
       this.tasks.push({
-        title: this.newTasksTitle,
-        description: this.newTasksDescription,
+        title: this.TasksTitle,
+        description: this.TasksDescription,
         exTime: '12:30 PM',
         status: Status.ToDo,
       });
     }
 
-    this.newTasksTitle = '';
-    this.newTasksDescription = '';
+    this.TasksTitle = '';
+    this.TasksDescription = '';
     this.saveTasks();
     this.$parent.$emit('tasks-change', this.tasks.length);
 

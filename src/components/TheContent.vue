@@ -2,7 +2,7 @@
 .content-container.flex.justify-center
   .content-container-data.flex.space-between.align-center
     .date
-      h6 {{date}}
+      h6 {{timestamp}}
     router-view
 </template>
 
@@ -15,6 +15,18 @@ import Component from 'vue-class-component';
 })
 
 export default class TheContent extends Vue {
-  date: string = 'TODAY';
+  timestamp: string = '';
+
+  created(): void {
+    setInterval(this.getNow, 1000);
+  }
+
+  getNow(): void {
+    const today: any = new Date();
+    const date: string = `${today.getDate()}.${(today.getMonth() + 1)}.${today.getFullYear()}`;
+    const time: string = `${today.getHours()}:${today.getMinutes()}`;
+    const dateTime: string = `${date} ${time}`;
+    this.timestamp = dateTime;
+  }
 }
 </script>
